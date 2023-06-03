@@ -12,12 +12,44 @@ Make sure the monitoring server has `redis-server` installed that without passwo
 
 Download the `watchcorgi-client` and `watchcorgi-server` programs separately, put the `watchcorgi-client` on the GPU server you want to monitor, and the `watchcorgi-server` on a monitoring server.
 
+## Start client
+
+```bash
+watchcorgi-client --server gpu --address http://192.168.1.206:7070/update --interval 9
+```
+
+## Start server
+
+```bash
+watchcorgi-server --address 0.0.0.0 --port 7070
+```
+
+# Installation as service
+
 If you want to use `systemd` to deploy, please change the server address in the service file provided here.
+
+## Client
+
+```bash
+cp watchcorgi-client.service /etc/systemd/system
+systemctl enable watchcorgi-client.service
+systemctl start watchcorgi-client.service
+```
+
+## Server
+
+```bash
+cp watchcorgi-server.service /etc/systemd/system
+systemctl enable watchcorgi-server.service
+systemctl start watchcorgi-server.service
+```
 
 # Usage
 
+Open the server address in your browser or use the command.
+
 ```bash
-➜  server git:(main) curl http://127.0.0.1:7070/info
+curl http://127.0.0.1:7070/info
 >> 2023-06-03 12:01:31 [watchcorgi]
 +---------+------+------+-------------------------------------+------+-------------------+--------------+-----------+
 |   name  |cpu[s]|cpu[u]|              gpu device             |gpu[u]|       gpu[m]      |   gpu user   |update time|
