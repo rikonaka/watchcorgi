@@ -22,7 +22,7 @@ watchcorgi-client --server gpu --address http://192.168.1.206:7070/update --inte
 watchcorgi-server --address 0.0.0.0 --port 7070
 ```
 
-# Installation as service
+# Installation as service (recommended)
 
 If you want to use `systemd` to deploy, please change the server address in the service file provided here.
 
