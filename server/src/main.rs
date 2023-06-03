@@ -555,14 +555,12 @@ mod tests {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    println!("Web is running...");
+    let args = Args::parse();
+    println!("Web[{}:{}] is running...", &args.address, &args.port);
     // let pool = PgPool::connect(PG_DATABASE_URL)
     //     .await
     //     .expect("Connect to postgre failed");
     // PG_CONNECTION.set(pool).expect("Set PG_CONNECTION failed");
-
-    let args = Args::parse();
-
     let client = match redis::Client::open("redis://127.0.0.1/") {
         Ok(c) => c,
         Err(e) => panic!("Connect to redis failed: {}", e),
