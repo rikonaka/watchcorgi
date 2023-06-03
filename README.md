@@ -84,3 +84,21 @@ curl http://127.0.0.1:7070/info
 +---------+------+------+-------------------------------------+------+-------------------+--------------+-----------+
 Powered by Rust
 ```
+
+# API
+
+## Info
+
+Return a visual GPU monitor.
+
+```bash
+http://127.0.0.1:7070/info
+```
+
+## Info2
+
+Returns raw JSON data for use by the front-end.
+
+```bash
+http://127.0.0.1:7070/info
+```
