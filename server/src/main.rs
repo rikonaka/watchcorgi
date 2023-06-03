@@ -198,7 +198,6 @@ async fn info() -> impl Responder {
         }
 
         let gpu_users_vec = &server_info.gpu.users;
-        let new_gpu_vec = gpu_users_vec;
         let mut new_gpu_vec = Vec::new();
         for gpu in gpu_users_vec {
             if gpu.contains("/") {
