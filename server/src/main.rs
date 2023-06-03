@@ -220,7 +220,7 @@ async fn info() -> impl Responder {
                 new_gpu_vec.push(gpu.to_string());
             }
         }
-        for gpu in new_gpu_vec {
+        for gpu in &new_gpu_vec {
             if gpu.len() > gpu_user_len {
                 gpu_user_len = gpu.len();
             }
