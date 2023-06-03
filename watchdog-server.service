@@ -7,8 +7,8 @@ Type=simple
 User=root
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/bin/watchdog-server
-ExecReload=/usr/bin/watchdog-server
+ExecStart=/usr/bin/watchdog-server --address 0.0.0.0 --port 7070
+ExecReload=/usr/bin/watchdog-server --address 0.0.0.0 --port 7070
 LimitNOFILE=1048576
 
 [Install]

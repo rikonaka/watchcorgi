@@ -15,11 +15,11 @@ use systemstat::{saturating_sub_bytes, Platform, System};
 struct Args {
     /// Server type, GPU server of CPU server
     #[clap(long, default_value = "gpu")]
-    server_type: String,
+    server: String,
 
     /// Host server IP address
     #[clap(long, default_value = "http://192.168.1.206:7070/update")]
-    server_addr: String,
+    address: String,
 
     /// Upload interval (sec)
     #[clap(long, default_value_t = 60)]
@@ -371,10 +371,10 @@ fn others_info() -> HashMap<String, String> {
 fn main() {
     if cfg!(target_os = "linux") {
         let args = Args::parse();
-        let server_info = ServerInfo::new("123456", &args.server_addr);
+        let server_info = ServerInfo::new("123456", &args.address);
         let interval = args.interval;
         let sleep_duration = Duration::from_secs(interval);
-        let gpu_flag = match args.server_type.as_str() {
+        let gpu_flag = match args.server.as_str() {
             "gpu" => true,
             _ => false,
         };
