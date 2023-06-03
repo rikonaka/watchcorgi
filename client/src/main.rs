@@ -18,7 +18,7 @@ struct Args {
     server: String,
 
     /// Host server IP address
-    #[clap(long, default_value = "http://192.168.1.206:7070/update")]
+    #[clap(long, default_value = "http://127.0.0.1:7070/update")]
     address: String,
 
     /// Upload interval (sec)
