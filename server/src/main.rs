@@ -14,7 +14,7 @@ use std::collections::HashMap;
 static RD_CONNECTION: OnceCell<Client> = OnceCell::new();
 
 const PASSWORD: &str = "123456"; // toy password
-                                 // const PG_DATABASE_URL: &str = "postgresql://server:justdoit@127.0.0.1:5432/server";
+                                 // const PG_DATABASE_URL: &str = "postgresql://user:password@127.0.0.1:5432/server";
 
 /// Simple program to get server infomation
 #[derive(Parser, Debug)]
