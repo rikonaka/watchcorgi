@@ -13,7 +13,7 @@ Download the `watchcorgi-client` and `watchcorgi-server` programs separately, pu
 ## Start client
 
 ```bash
-watchcorgi-client --server gpu --address http://192.168.1.206:7070/update --interval 9
+watchcorgi-client --server gpu --address http://YOUR_SERVER_ADDRESS:YOUR_SERVER_PORT/update --interval 9
 ```
 
 ## Start server
