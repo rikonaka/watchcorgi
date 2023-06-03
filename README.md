@@ -2,8 +2,6 @@
 
 A simple multi-GPU server management tool.
 
-![overview](./watchcorgi.drawio.png)
-
 # Pre-preparation
 
 Make sure the monitoring server has `redis-server` installed that without password.
