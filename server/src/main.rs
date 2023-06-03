@@ -13,8 +13,9 @@ use std::collections::HashMap;
 // static PG_CONNECTION: OnceCell<PgPool> = OnceCell::new();
 static RD_CONNECTION: OnceCell<Client> = OnceCell::new();
 
-const PASSWORD: &str = "123456"; // toy password
-                                 // const PG_DATABASE_URL: &str = "postgresql://user:password@127.0.0.1:5432/server";
+// toy password
+const PASSWORD: &str = "123456";
+// const PG_DATABASE_URL: &str = "postgresql://user:password@127.0.0.1:5432/server";
 
 /// Simple program to get server infomation
 #[derive(Parser, Debug)]
@@ -197,32 +198,33 @@ async fn info() -> impl Responder {
         }
 
         let gpu_users_vec = &server_info.gpu.users;
-        let mut new_gpu_vec = Vec::new();
-        for gpu in gpu_users_vec {
-            if gpu.contains("/") {
-                let tmp_vec: Vec<&str> = gpu.split("/").collect();
-                if tmp_vec.len() > 4 {
-                    let new_gpu = tmp_vec[4];
-                    new_gpu_vec.push(new_gpu.to_string());
-                } else {
-                    // new_gpu_vec.push("".to_string());
-                    new_gpu_vec.push(tmp_vec[tmp_vec.len() - 1].to_string());
-                }
-            } else if gpu.contains("no running processes found") {
-                new_gpu_vec.push("null".to_string());
-            } else if gpu.contains("driver failed") {
-                new_gpu_vec.push("driver failed".to_string());
-            } else {
-                // new_gpu_vec.push("".to_string());
-                new_gpu_vec.push(gpu.to_string());
-            }
-        }
+        let new_gpu_vec = gpu_users_vec;
+        // let mut new_gpu_vec = Vec::new();
+        // for gpu in gpu_users_vec {
+        //     if gpu.contains("/") {
+        //         let tmp_vec: Vec<&str> = gpu.split("/").collect();
+        //         if tmp_vec.len() > 4 {
+        //             let new_gpu = tmp_vec[4];
+        //             new_gpu_vec.push(new_gpu.to_string());
+        //         } else {
+        //             // new_gpu_vec.push("".to_string());
+        //             new_gpu_vec.push(tmp_vec[tmp_vec.len() - 1].to_string());
+        //         }
+        //     } else if gpu.contains("no running processes found") {
+        //         new_gpu_vec.push("null".to_string());
+        //     } else if gpu.contains("driver failed") {
+        //         new_gpu_vec.push("driver failed".to_string());
+        //     } else {
+        //         // new_gpu_vec.push("".to_string());
+        //         new_gpu_vec.push(gpu.to_string());
+        //     }
+        // }
         for gpu in &new_gpu_vec {
             if gpu.len() > gpu_user_len {
                 gpu_user_len = gpu.len();
             }
         }
-        server_info.gpu.users = new_gpu_vec;
+        // server_info.gpu.users = new_gpu_vec;
 
         let cpu_hm = &server_info.cpu;
         let cpu_user = format!("{:.1} %", cpu_hm.get("user").unwrap() * 100.0);
