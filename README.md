@@ -100,5 +100,5 @@ http://127.0.0.1:7070/info
 Returns raw JSON data for use by the front-end.
 
 ```bash
-http://127.0.0.1:7070/info
+http://127.0.0.1:7070/info2
 ```
