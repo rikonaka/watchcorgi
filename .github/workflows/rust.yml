@@ -16,7 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build
+    - name: Build client
+      working-directory: ./client
       run: cargo build --verbose
-    - name: Run tests
+    - name: Run client tests
+      run: cargo test --verbose
+    - name: Build server
+      working-directory: ./server
+      run: cargo build --verbose
+    - name: Run server tests
       run: cargo test --verbose
