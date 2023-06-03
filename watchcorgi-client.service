@@ -1,5 +1,5 @@
 [Unit]
-Description=Watchdog Client Service
+Description=Watchcorgi Client Service
 After=network.target
 
 [Service]
